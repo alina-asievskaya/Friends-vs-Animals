@@ -7,7 +7,6 @@ using UnityEngine.UI;
 
 public class Spawner : MonoBehaviour
 {
-    public SpriteRenderer testSprite;
     // list of towers
 
     int spawnID = -1;
