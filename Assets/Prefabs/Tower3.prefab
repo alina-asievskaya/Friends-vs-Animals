@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1783057797272187940}
   - component: {fileID: 1983405551491112957}
-  - component: {fileID: 8525139948086854272}
+  - component: {fileID: 4502075350734756522}
   m_Layer: 7
-  m_Name: Tower2
+  m_Name: Tower3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: -1751531501
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 88794fc5febd16e40a94cacbf542b65b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b6d14bcb8d9dbb349beb9d3619096732, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8525139948086854272
+--- !u!114 &4502075350734756522
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -94,8 +94,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 3415136199549289959}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3906d986c8d67b4bb117ba0cc48cabe, type: 3}
+  m_Script: {fileID: 11500000, guid: 682a224cb79157c438b1658ba5970a6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 8
-  cost: 10
+  health: 4
+  cost: 8
+  damage: 2
+  shootItemPrefab: {fileID: 1150501585261582059, guid: 3fcbc037b82e73241aef671c616f700f, type: 3}
+  interval: 6

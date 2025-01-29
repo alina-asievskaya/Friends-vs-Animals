@@ -43,19 +43,46 @@ public class Spawner : MonoBehaviour
 
             if (spawnTilemap.GetColliderType(cellPosDefault) == Tile.ColliderType.Sprite)
             {
-                SpawnTower(cellPosCentered);
+                int towerCost = TowerCost(spawnID);
+                if (GameManager.instance.currency.EnoughCurrency(towerCost))
+                {
+                    GameManager.instance.currency.Use(towerCost);
 
-                spawnTilemap.SetColliderType(cellPosDefault, Tile.ColliderType.None);
+                    SpawnTower(cellPosCentered);
+                    spawnTilemap.SetColliderType(cellPosDefault, Tile.ColliderType.None);
+                }
+                else
+                {
+                    Debug.Log("dcidb");
+                }
+                
 
             }
 
         }
     }
+
+    public int TowerCost(int id)
+    {
+        switch (id)
+        {
+            case 0:
+                return towersPrefabs[id].GetComponent<Tower_Pink>().cost;
+            case 1:
+                return towersPrefabs[id].GetComponent<Tower_Mask>().cost;
+            case 2:
+                return towersPrefabs[id].GetComponent<Tower_Ninja>().cost;
+            default:
+                return -1;
+        }
+    }
+
+
     
     void SpawnTower(Vector3 position)
     {
         GameObject tower = Instantiate(towersPrefabs[spawnID], spawnTowerRoot);
-        tower.transform.position = position;
+        tower.transform.position = position;        
 
         DeselectTower();
     }

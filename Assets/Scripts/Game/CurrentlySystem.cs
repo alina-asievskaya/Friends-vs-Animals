@@ -34,7 +34,7 @@ public class CurrentlySystem : MonoBehaviour
         }
     }
 
-    bool EnoughCurrency(int val)
+    public bool EnoughCurrency(int val)
     {
         if (val <= currency)
             return true;

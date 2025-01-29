@@ -8,6 +8,11 @@ public static GameManager instance;
 
     private void Awake() { instance = this; }
 
+    public Spawner spawner;
+    public HealthSystem health;
+    public CurrentlySystem currency;
+
+
     private void Start()
     {
         GetComponent<HealthSystem>().Init();
