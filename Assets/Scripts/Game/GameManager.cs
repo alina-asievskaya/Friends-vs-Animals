@@ -17,6 +17,14 @@ public static GameManager instance;
     {
         GetComponent<HealthSystem>().Init();
         GetComponent<CurrentlySystem>().Init();
+
+        StartCoroutine(WaveStartDelay());
+    }
+
+    IEnumerator WaveStartDelay()
+    {
+        yield return new WaitForSeconds(2f);
+        GetComponent<EnemySpawner>().StartSpawning();
     }
 
 }

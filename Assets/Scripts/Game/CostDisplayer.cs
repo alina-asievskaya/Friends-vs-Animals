@@ -8,6 +8,7 @@ public class CostDisplayer : MonoBehaviour
     public int towerID;
     public int towerCost;
     private TextMeshProUGUI textMeshPro;
+    public TMP_Text currencyMoney;
 
     void Start()
     {
@@ -16,6 +17,17 @@ public class CostDisplayer : MonoBehaviour
 
         // Получаем стоимость башни
         towerCost = GameManager.instance.spawner.TowerCost(towerID);
+
+        int currentMoney = int.Parse(currencyMoney.text);
+
+        if (towerCost > currentMoney)
+        {
+            textMeshPro.color = Color.red; // Устанавливаем цвет текста в красный
+        }
+        else
+        {
+            textMeshPro.color = Color.white; // Устанавливаем цвет текста в белый
+        }
 
         // Устанавливаем текст
         textMeshPro.text = towerCost.ToString();

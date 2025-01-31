@@ -17,6 +17,7 @@ public class ShootItems : MonoBehaviour
     {
         if(collision.tag == "Enemy")
         {
+            collision.GetComponent<Enemy>().LoseHealth();
             Destroy(gameObject);
         }
 

@@ -101,4 +101,4 @@ MonoBehaviour:
   cost: 8
   damage: 2
   shootItemPrefab: {fileID: 1150501585261582059, guid: 3fcbc037b82e73241aef671c616f700f, type: 3}
-  interval: 6
+  interval: 4
