@@ -2,15 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Tower_Ninja : MonoBehaviour
+public class Tower_Ninja : Tower
 {
-    public int health;
-    public int cost;
     public int damage;
     public GameObject shootItemPrefab;
     public float interval;
 
-    void Start()
+    protected override void Start()
     {
         StartCoroutine(ShootDelay());
     }
@@ -29,18 +27,4 @@ public class Tower_Ninja : MonoBehaviour
         ShootItem.GetComponent<ShootItems>().Init(damage);
     }
 
-    public void LoseHealth()
-    {
-        health--;
-
-        if (health <= 0)
-        {
-            Die();
-        }
-    }
-
-    public void Die()
-    {
-        Destroy(gameObject);
-    }
 }
