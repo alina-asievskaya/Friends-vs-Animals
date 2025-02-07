@@ -16,6 +16,8 @@ public class Spawner : MonoBehaviour
     public List<Image> towersUI;
     public Tilemap spawnTilemap;
 
+    private Vector3Int tilePos;
+
     public void Update()
     {
         if(CanSpawn())
@@ -48,7 +50,7 @@ public class Spawner : MonoBehaviour
                 {
                     GameManager.instance.currency.Use(towerCost);
 
-                    SpawnTower(cellPosCentered);
+                    SpawnTower(cellPosCentered, cellPosDefault);
                     spawnTilemap.SetColliderType(cellPosDefault, Tile.ColliderType.None);
                 }
                 else
@@ -78,13 +80,19 @@ public class Spawner : MonoBehaviour
     }
 
 
-    
-    void SpawnTower(Vector3 position)
+
+    void SpawnTower(Vector3 position, Vector3Int cellPosition)
     {
         GameObject tower = Instantiate(towersPrefabs[spawnID], spawnTowerRoot);
-        tower.transform.position = position;        
+        tower.transform.position = position;
+        tower.GetComponent<Tower>().Init(cellPosition);
 
         DeselectTower();
+    }
+
+    public void RevertCellState(Vector3Int pos)
+    {
+        spawnTilemap.SetColliderType(pos, Tile.ColliderType.Sprite);
     }
 
     public void SelectTower(int id)

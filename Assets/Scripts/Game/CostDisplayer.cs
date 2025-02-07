@@ -12,7 +12,6 @@ public class CostDisplayer : MonoBehaviour
 
     void Start()
     {
-        // Получаем компонент TextMeshProUGUI
         textMeshPro = GetComponent<TextMeshProUGUI>();
 
         // Получаем стоимость башни

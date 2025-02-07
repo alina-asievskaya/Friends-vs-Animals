@@ -19,10 +19,9 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
-        // Найдите компонент UIManager в сцене
+        
         uiManager = FindObjectOfType<UIManager>();
-        // Обновите текст жизней при старте
-       // uiManager.UpdateHeartText();
+     
     }
 
     void Update()
@@ -39,7 +38,7 @@ public class Enemy : MonoBehaviour
         {
             animator.Play("Attack");
             yield return new WaitForSeconds(attackInterval);
-            InflictDamage(); // Наносим урон
+            InflictDamage(); 
         }
     }
 
@@ -104,7 +103,7 @@ public class Enemy : MonoBehaviour
 
     private void HandleExitEnemy()
     {
-        uiManager.Heart(); // Уменьшаем жизни через UIManager
+        uiManager.Heart(); 
         Destroy(gameObject);
     }
 }
