@@ -24,7 +24,7 @@ public static GameManager instance;
     IEnumerator WaveStartDelay()
     {
         yield return new WaitForSeconds(2f);
-        GetComponent<EnemySpawner>().StartSpawning();
+        //GetComponent<EnemySpawner>().StartSpawning();
     }
 
 }
