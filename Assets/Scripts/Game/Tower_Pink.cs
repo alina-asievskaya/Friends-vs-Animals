@@ -9,6 +9,7 @@ public class Tower_Pink : Tower
     public float interval;
     public GameObject object_coin;
 
+
     protected override void Start()
     {
         StartCoroutine(Interval());

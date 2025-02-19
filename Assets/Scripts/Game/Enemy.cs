@@ -17,6 +17,9 @@ public class Enemy : MonoBehaviour
 
     private UIManager uiManager;
 
+    public delegate void EnemyDefeated();
+    public event EnemyDefeated OnEnemyDefeated;
+
     void Start()
     {
         
@@ -68,7 +71,11 @@ public class Enemy : MonoBehaviour
         StartCoroutine(BlinkRed());
 
         if (health <= 0)
+        {
+            OnEnemyDefeated?.Invoke(); // Вызываем событие, если враг уничтожен
             Destroy(gameObject);
+        }
+
     }
 
     IEnumerator BlinkRed()

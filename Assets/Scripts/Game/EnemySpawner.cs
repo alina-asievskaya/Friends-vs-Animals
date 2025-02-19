@@ -15,6 +15,7 @@ public class EnemySpawner : MonoBehaviour
 
     private int enemyCount;
     private float enemySpeed;
+    private int activeEnemies; 
 
     public void StartSpawning(int count, float speed)
     {
@@ -40,6 +41,36 @@ public class EnemySpawner : MonoBehaviour
 
         // Устанавливаем скорость врага
         spawnedEnemy.GetComponent<Enemy>().moveSpeed = enemySpeed;
+
+        spawnedEnemy.GetComponent<Enemy>().moveSpeed = enemySpeed;
+
+        // Увеличиваем счетчик активных врагов
+        activeEnemies++;
+
+        // Подписываемся на событие уничтожения врага
+        spawnedEnemy.GetComponent<Enemy>().OnEnemyDefeated += HandleEnemyDefeated;
+    }
+
+    private void HandleEnemyDefeated()
+    {
+        activeEnemies--; // Уменьшаем счетчик активных врагов
+        CheckForWinCondition(); // Проверяем выигрышные условия
+    }
+
+    // Метод для проверки, остались ли враги
+    public bool AreEnemiesDefeated()
+    {
+        return activeEnemies <= 0; // Проверяем, остались ли активные враги
+    }
+
+    // Метод для проверки условий выигрыша
+    private void CheckForWinCondition()
+    {
+        if (AreEnemiesDefeated())
+        {
+            // Вызываем метод Winner в Complexity
+            FindObjectOfType<Complexity>().Winner();
+        }
     }
 
 }
