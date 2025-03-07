@@ -47,7 +47,6 @@ public class UIManager : MonoBehaviour
     {
         gameOverPanel.SetActive(true); // Показываем панель
         Time.timeScale = 0; // Останавливаем игру
-        Debug.Log("Game Over!"); // Пример
         yield return new WaitForSecondsRealtime(1.5f); // Ждем 2 секунды (используем WaitForSecondsRealtime)
         Time.timeScale = 1; // Возвращаем нормальную скорость времени
         SceneManager.LoadScene("Menu");
