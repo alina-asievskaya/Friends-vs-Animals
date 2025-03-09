@@ -16,6 +16,9 @@ public class UIManager : MonoBehaviour
     public TMP_Text tower3Text;
     public TMP_Text currencyMoney;
 
+    public TMP_Text heartEnd; 
+    public TMP_Text coinEnd;
+
     public GameObject gameOverPanel;
 
     void Start()
@@ -23,12 +26,21 @@ public class UIManager : MonoBehaviour
         UpdateHeartText(heart);
     }
 
+    private void Update()
+    {
+        UpdateWinPanel();
+    }
+
     public void UpdateHeartText(int hearts)
     {
         heartText.text = hearts.ToString();
     }
 
-
+    public void UpdateWinPanel()
+    {
+         heartEnd.text = heartText.text;
+        coinEnd.text = currencyMoney.text;
+    }
 
 
 
@@ -42,6 +54,7 @@ public class UIManager : MonoBehaviour
             StartCoroutine(ShowGameOverPanel());
         }
     }
+
 
     private IEnumerator ShowGameOverPanel()
     {
