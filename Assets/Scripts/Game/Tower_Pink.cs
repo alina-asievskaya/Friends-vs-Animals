@@ -7,7 +7,9 @@ public class Tower_Pink : Tower
 {
     public int IncomeValue;
     public float interval;
+    
     public GameObject object_coin;
+    //public GameObject object_delete;
 
 
     protected override void Start()
@@ -36,4 +38,29 @@ public class Tower_Pink : Tower
         object_coin.SetActive(false);
 
     }
+
+    //private void OnMouseDown()
+    //{
+    //    object_delete.SetActive(true); // Показываем кнопку удаления
+    //    Button deleteButton = object_delete.GetComponent<Button>();
+
+    //    if (deleteButton != null)
+    //    {
+    //        deleteButton.onClick.RemoveAllListeners();
+    //        deleteButton.onClick.AddListener(DeleteTower);
+    //        Debug.Log("Delete button listener added.");
+    //    }
+    //    else
+    //    {
+    //        Debug.LogError("Button component is missing on the delete button object!");
+    //    }
+    //}
+
+    //public void DeleteTower()
+    //{
+    //    Debug.Log("DeleteTower called.");
+    //    Destroy(gameObject);
+    //    object_delete.SetActive(false);
+    //}
+
 }

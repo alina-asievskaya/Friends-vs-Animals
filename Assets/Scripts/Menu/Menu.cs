@@ -7,4 +7,9 @@ public class Menu : MonoBehaviour
     {
         SceneManager.LoadScene(sceneMenu);
     }
+
+    public void BackHome(string Home)
+    {
+        SceneManager.LoadScene(Home);
+    }
 }

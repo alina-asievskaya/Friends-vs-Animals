@@ -22,9 +22,7 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
-        
         uiManager = FindObjectOfType<UIManager>();
-     
     }
 
     void Update()
@@ -41,7 +39,7 @@ public class Enemy : MonoBehaviour
         {
             animator.Play("Attack");
             yield return new WaitForSeconds(attackInterval);
-            InflictDamage(); 
+            InflictDamage();
         }
     }
 
@@ -73,9 +71,9 @@ public class Enemy : MonoBehaviour
         if (health <= 0)
         {
             OnEnemyDefeated?.Invoke(); // Вызываем событие, если враг уничтожен
+            Debug.Log("Enemy defeated."); // Отладка
             Destroy(gameObject);
         }
-
     }
 
     IEnumerator BlinkRed()
@@ -87,13 +85,13 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Tower" && detectedTower == null)
+        if (collision.CompareTag("Tower") && detectedTower == null)
         {
             detectedTower = collision.GetComponent<Tower>();
             attackOrder = StartCoroutine(Attack());
         }
 
-        if (collision.tag == "ExitEnemy")
+        if (collision.CompareTag("ExitEnemy"))
         {
             HandleExitEnemy();
         }
@@ -101,7 +99,7 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.tag == "Tower" && detectedTower != null)
+        if (collision.CompareTag("Tower") && detectedTower != null)
         {
             detectedTower = null;
             StopCoroutine(attackOrder);
@@ -110,7 +108,9 @@ public class Enemy : MonoBehaviour
 
     private void HandleExitEnemy()
     {
-        uiManager.Heart(); 
+        // Учитываем, что враг покинул поле
+        OnEnemyDefeated?.Invoke(); // Вызываем событие
+        uiManager.Heart();
         Destroy(gameObject);
     }
 }
