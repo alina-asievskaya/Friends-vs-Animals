@@ -1,33 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class LoadScene : MonoBehaviour
 {
-    [SerializeField] 
-    private int units;
+    public Slider slider;
 
-    [SerializeField] 
-    private GameObject cratePrefab;
-
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        
+        StartCoroutine(LoadGameScene());
     }
 
-    // Update is called once per frame
-    void Update()
+    private IEnumerator LoadGameScene()
     {
-        
-    }
+        float duration = 0.9f;
+        float elapsed = 0f;
 
-    public IEnumerator BuilderUnits()
-    {
-        for (int i = 0; i < units; i++)
+        while (elapsed < duration)
         {
+            elapsed += Time.deltaTime;
+            slider.value = Mathf.Clamp01(elapsed / duration);
             yield return null;
         }
+
+        // Загрузить сцену Game
+        SceneManager.LoadScene("Game");
     }
 
 }

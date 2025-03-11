@@ -6,6 +6,7 @@ public class Menu : MonoBehaviour
 {
     public void ChangeScenes(string sceneMenu)
     {
+
         SceneManager.LoadScene(sceneMenu);
     }
 
@@ -13,6 +14,7 @@ public class Menu : MonoBehaviour
     {
         SceneManager.LoadScene(Home);
     }
+
 
     
 }
